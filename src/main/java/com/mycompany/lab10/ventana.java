@@ -1,11 +1,32 @@
 
 package com.mycompany.lab10;
 
+import java.util.List;
+import javax.swing.DefaultListModel;
+
 public class ventana extends javax.swing.JFrame {
 
  
-    public ventana() {
+    public ventana(double estudiante[],double promedio1 , double promedio2 ,double promedio3,double promedio4,List<List<String>> lines){
         initComponents();
+        //Creación de un nuevo modelo
+        DefaultListModel<String> modelo1 = new DefaultListModel<String>();
+        this.jList1.setModel(modelo1);
+        modelo1 = (DefaultListModel<String>) this.jList1.getModel();
+        
+        for (int i = 0; i < lines.size(); i++) {
+            modelo1.addElement("Promedio estudiante: " + estudiante[i]);
+        }
+        modelo1.addElement("Promedio nota 1: " + promedio1);
+        modelo1.addElement("Promedio nota 2: " + promedio2);
+        modelo1.addElement("Promedio nota 3: " + promedio3);
+        modelo1.addElement("Promedio nota 4: " + promedio4);
+        
+        
+        
+    }
+    public ventana(){
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -14,6 +35,8 @@ public class ventana extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle(".");
@@ -27,19 +50,26 @@ public class ventana extends javax.swing.JFrame {
             }
         });
 
+        jScrollPane1.setViewportView(jList1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(154, 154, 154)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 147, Short.MAX_VALUE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(41, 41, 41)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 502, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(293, 293, 293)
+                                .addComponent(jLabel1)))
+                        .addGap(0, 121, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -47,7 +77,9 @@ public class ventana extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 428, Short.MAX_VALUE)
+                .addGap(5, 5, 5)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE)
+                .addGap(11, 11, 11)
                 .addComponent(jButton1)
                 .addContainerGap())
         );
@@ -95,5 +127,7 @@ public class ventana extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JList<String> jList1;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
